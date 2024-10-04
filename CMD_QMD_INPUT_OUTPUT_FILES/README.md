@@ -6,6 +6,9 @@ The directories classic_all contain input/output files of the simulations run wi
 (as opposed to the system specific models used in the folders classic/quantum).
 
 The folder gas_cells, unit_cells, super_cells contain initital geometries respectively for 
+
 the gas phase
+
 the solid phase unit cell
+
 the solid phase super cell
