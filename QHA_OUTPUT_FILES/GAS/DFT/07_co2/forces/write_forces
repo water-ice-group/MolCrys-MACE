@@ -1,0 +1,21 @@
+i=$(wc -l < DISP)
+
+for ((j=1; j<=i; j++))
+do
+
+header=$(awk -v j="$j" 'NR==j {print $0}' DISP | sed 's/^ *" *//; s/ *" *\\ *$//')
+echo $header
+
+echo $header >DYNMAT.$j
+cat out_${j}.extxyz | awk '{if ( NR>2) printf "%14.8f  %14.8f  %14.8f\n",$5,$6,$7  }' >>DYNMAT.$j
+done
+
+# restore POSCAR file
+
+echo $i > FORCES
+j=1
+while test $j -le $i
+do 
+cat DYNMAT.$j >> FORCES
+j=`expr $j + 1`
+done

@@ -1,0 +1,51 @@
+<!-- How much do you want to printout. For debug "high", otherwise "low" -->
+<simulation verbosity='high'>
+  <!-- All estimators " -->
+    <output prefix='simulation'>
+	    <properties stride='100' filename='out'>
+		    [ step, time{picosecond}, conserved, temperature{kelvin}, potential{electronvolt}, pressure_md{gigapascal}, volume, kinetic_md{electronvolt} ]
+	          </properties>
+      <trajectory stride='100' filename='pos' format='xyz' cell_units='angstrom'> positions{angstrom}</trajectory>
+<checkpoint filename="chk" stride="100" overwrite="true"/>
+  </output>
+  <total_steps> 1000000 </total_steps>
+  <prng>
+    <seed>31415</seed>
+  </prng>
+  <!-- Every forcefield communicates with i-PI with a socket" -->
+  <ffsocket name='ase' mode='unix' pbc='False'>
+	  <address> bN </address> 
+	  <latency> 1e-3 </latency>
+  </ffsocket>
+  <system>
+    <initialize nbeads='1'>
+      <file mode='xyz'> init.xyz </file>
+      <velocities mode='thermal' units='kelvin'> 279 </velocities>
+    </initialize>
+    <forces>
+      <force forcefield='ase' weight='1.0'>  </force>
+    </forces>
+
+    <ensemble>
+      <temperature units='kelvin'> 279 </temperature>
+    </ensemble>
+
+    <motion mode='dynamics'>
+      <dynamics mode='nvt'>
+ <thermostat mode='gle'>
+          <tau units='femtosecond'> 10 </tau>
+    <A shape='(5,5)'>
+      [   4.498098855452e-3,    6.594810718477e-6,    2.788030342989e-4,   -8.808265165053e-4,    5.605371493938e-3,
+  -6.726802271646e-6,    2.079069559861e-9,    1.746169548818e-5,   -4.800164465960e-6,    1.025830873432e-5,
+  -3.586191452340e-4,   -1.746169548818e-5,    3.287481976399e-5,    1.245698716799e-4,   -2.417657162526e-4,
+  -2.508912543565e-4,    4.800164465960e-6,   -1.245698716799e-4,    6.449207766266e-4,    2.783583234046e-4,
+   5.273493443008e-3,   -1.025830873432e-5,    2.417657162526e-4,   -2.783583234046e-4,    7.488477456790e-3
+     ]
+    </A>
+  </thermostat>
+        <timestep units='femtosecond'> 1.0 </timestep>
+      </dynamics>
+     </motion>
+
+  </system>
+</simulation>
