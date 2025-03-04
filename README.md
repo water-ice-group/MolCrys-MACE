@@ -1,8 +1,8 @@
-# Supplementary data for UNPUBLISHED 'Accurate and efficient sublimation enthalpies of molecular crystals with quantum nuclear effects' 
+# Supplementary data for 'Accurate and efficient machine learning interatomic potentials for finite temperature modeling of molecular crystals' , arXiv:2502.15530 
 
 This repository contains supplementary data supporting the findings of the paper:
 
-Della Pia F, Shi B X, Kapil V, Zen A, Alfè D, Michaelides A, Accurate and efficient sublimation enthalpies of molecular crystals with quantum nuclear effects
+Della Pia F, Shi B X, Kapil V, Zen A, Alfè D, Michaelides A, Accurate and efficient machine learning interatomic potentials for finite temperature modeling of molecular crystals
 
 
 ## Contents
